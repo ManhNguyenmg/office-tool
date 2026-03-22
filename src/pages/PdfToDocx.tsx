@@ -8,8 +8,8 @@ import ProcessingModal from "@/components/ProcessingModal";
 import { fireConfetti } from "@/lib/confetti";
 
 // Configure pdf.js worker
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
-
+import pdfWorkerUrl from "pdfjs-dist/build/pdf.worker.min.mjs?url";
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
 /* ── Extract text from PDF ── */
 async function extractTextFromPdf(file: File): Promise<{ pages: string[] }> {
   const arrayBuffer = await file.arrayBuffer();
